@@ -1,0 +1,4 @@
+class CargoCarrier {
+private:
+public:
+};

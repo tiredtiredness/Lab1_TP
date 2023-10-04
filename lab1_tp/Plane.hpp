@@ -1,0 +1,4 @@
+class Plane {
+private:
+public:
+};
