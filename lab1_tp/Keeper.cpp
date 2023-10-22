@@ -177,4 +177,13 @@ void Keeper::save() {
     cout << "Элементы сохранены в файл" << endl;
 }
 
-
+ostream& operator<<(ostream& out , Keeper& obj) {
+    if (!obj.size) {
+        cout << "Контейнер пуст" << endl;
+        return out;
+    }
+    for (int i = 0; i < size; i++) {
+        obj.data[i]->print(out);
+    }
+    return out;
+}
