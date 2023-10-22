@@ -150,4 +150,31 @@ void Keeper::del() {
     }
 }
 
+void Keeper::load() {
+    ifstream fin("keeper.txt");
+    if (fin.fail()) {
+        cout << "Файл пуст" << endl;
+        return;
+    }
+    int type = 0;
+    while (fin) {
+        fin >> type;
+        if (fin.peek() == -1) {
+            break;
+        }
+        add(type, fin);
+    }
+    fin.close();
+    cout << "Элементы загружены из файла" << endl;
+}
+
+void Keeper::save() {
+    ofstream fout("keeper.txt");
+    for (int i = 0; i < size; i++) {
+        data[i]->save(fout);
+    }
+    fout.close();
+    cout << "Элементы сохранены в файл" << endl;
+}
+
 
