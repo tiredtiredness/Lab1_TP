@@ -1,4 +1,4 @@
-#include <string>
+#include "CargoCarrier.hpp"
 
 class Car {
 private:

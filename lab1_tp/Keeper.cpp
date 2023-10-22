@@ -23,7 +23,7 @@ void Keeper::add() {
             << "Ваш выбор: ";
         cin >> type;
         if (type > 3 || type < 1) {
-            throw "Неверный класс наследника"
+            throw "Неверный класс наследника";
         }
         CargoCarrier** tmp = new CargoCarrier * [size + 1];
         for (int i = 0; i < size; i++) {
@@ -88,7 +88,7 @@ void Keeper::edit() {
         }
         data[index]->edit();
         if (data[index]->isError()) {
-            throw "Возникла ошибка при изменении элемента"
+            throw "Возникла ошибка при изменении элемента";
         }
         else {
             cout << "Элемент изменен" << endl;
