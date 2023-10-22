@@ -1,8 +1,12 @@
+#pragma once
 #include "CargoCarrier.hpp"
+#include <string>
 
-class Plane {
+using namespace std;
+
+class Plane : public CargoCarrier {
 private:
-    int year;
+    string type;
     string name;
     float volume;
     float size;
