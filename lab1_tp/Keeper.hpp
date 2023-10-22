@@ -13,6 +13,7 @@ public:
     ~Keeper();
     int getSize();
     void add();
+    void add(int type, ifstream& fin);
     void del();
     void edit();
     void save();

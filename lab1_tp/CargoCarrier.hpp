@@ -1,3 +1,4 @@
+#pragma once
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -12,6 +13,7 @@ public:
     void setType(int type);
     int getType();
     bool isError();
+    void setError(bool error);
     virtual void save(ofstream& fout) = 0;
     virtual void edit() = 0;
     virtual void print(ostream& out) = 0;

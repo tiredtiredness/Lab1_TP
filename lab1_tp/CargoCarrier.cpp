@@ -12,4 +12,8 @@ bool CargoCarrier::isError() {
     return this->error;
 }
 
+void CargoCarrier::setError(bool error) {
+    this->error = error;
+}
+
 CargoCarrier::~CargoCarrier() {};

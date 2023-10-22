@@ -1,4 +1,5 @@
 #include "Keeper.hpp"
+#include <string>
 
 Keeper::Keeper() {
     this->data = nullptr;
@@ -31,7 +32,7 @@ void Keeper::add() {
         }
         switch (type) {
             case 1:
-                tmp[size] = new Airplane;
+                tmp[size] = new Plane;
                 break;
             case 2:
                 tmp[size] = new Train;
@@ -53,8 +54,28 @@ void Keeper::add() {
         data = tmp;
         cout << "Элемент успешно добавлен" << endl;
     }
-    catch {
-        cout << err << endl;
+    catch (string err) {
+        cout << "Возникла ошибка" << err << endl;
+    }
+}
+
+void Keeper::add(int type, ifstream& fin) {
+    CargoCarrier** tmp = new CargoCarrier * [size + 1];
+    for (int i = 0; i < size; i++) {
+        tmp[i] = data[i];
+    }
+    switch (type) {
+        case 1:
+            tmp[size] = new Plane(fin);
+            break;
+        case 2:
+            tmp[size] = new Train(fin);
+            break;
+        case 3:
+            tmp[size] = new Car(fin);
+            break;
+        default:
+            break;
     }
 }
 
@@ -94,8 +115,8 @@ void Keeper::edit() {
             cout << "Элемент изменен" << endl;
         }
     }
-    catch {
-        cout << "Возникла ошибка при изменении элемента" << endl;
+    catch (string err) {
+        cout << "Возникла ошибка" << err << endl;
     }
 }
 void Keeper::del() {
@@ -133,7 +154,7 @@ void Keeper::del() {
             size--;
             return;
         }
-        Carrier** tmp = new Carrier * [size - 1];
+        CargoCarrier** tmp = new CargoCarrier * [size - 1];
         int j = 0;
         for (int i = 0; i < size; i++) {
             if (index == i)
@@ -145,8 +166,8 @@ void Keeper::del() {
         size--;
         cout << "Элемент удален" << endl;
     }
-    catch {
-        cout << "Возникла ошибка при удалении элемента" << endl;
+    catch (string err) {
+        cout << "Возникла ошибка" << err << endl;
     }
 }
 
@@ -182,7 +203,7 @@ ostream& operator<<(ostream& out , Keeper& obj) {
         cout << "Контейнер пуст" << endl;
         return out;
     }
-    for (int i = 0; i < size; i++) {
+    for (int i = 0; i < obj.size; i++) {
         obj.data[i]->print(out);
     }
     return out;
