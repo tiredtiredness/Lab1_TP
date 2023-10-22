@@ -98,3 +98,56 @@ void Keeper::edit() {
         cout << "Возникла ошибка при изменении элемента" << endl;
     }
 }
+void Keeper::del() {
+    int index;
+    if (!size) {
+        cout << "Контейнер пуст" << endl;
+        return;
+    }
+    try {
+        for (int i = 0; i < size; i++) {
+            cout << "(" << i << ")";
+            switch (data[i]->getType()) {
+                case 1:
+                    cout << "Самолет" << endl;
+                    break;
+                case 2:
+                    cout << "Поезд" << endl;
+                    break;
+                case 3:
+                    cout << "Автомобиль" << endl;
+                    break;
+                default:
+                    break;
+            }
+        }
+        cout << "Выберите элемент для удаления";
+        cin >> index;
+        if (index < 0 || index > size - 1) {
+            throw "Неверный индекс";
+        }
+        if (size == 1) {
+            delete[] data;
+            data = nullptr;
+            cout << "Элемент удален" << endl;
+            size--;
+            return;
+        }
+        Carrier** tmp = new Carrier * [size - 1];
+        int j = 0;
+        for (int i = 0; i < size; i++) {
+            if (index == i)
+                continue;
+            tmp[j] = data[i];
+        }
+        delete[] data;
+        data = tmp;
+        size--;
+        cout << "Элемент удален" << endl;
+    }
+    catch {
+        cout << "Возникла ошибка при удалении элемента" << endl;
+    }
+}
+
+
