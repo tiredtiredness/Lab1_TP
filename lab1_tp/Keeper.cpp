@@ -57,3 +57,44 @@ void Keeper::add() {
         cout << err << endl;
     }
 }
+
+void Keeper::edit() {
+    int index;
+    if (!size) {
+        cout << "Контейнер пуст" << endl;
+        return;
+    }
+    try {
+        for (int i = 0; i < size; i++) {
+            cout << "(" << i << ")";
+            switch (data[i]->getType()) {
+                case 1:
+                    cout << "Самолет" << endl;
+                    break;
+                case 2:
+                    cout << "Поезд" << endl;
+                    break;
+                case 3:
+                    cout << "Автомобиль" << endl;
+                    break;
+                default:
+                    break;
+            }
+        }
+        cout << "Выберите элемент для изменения";
+        cin >> index;
+        if (index < 0 || index > size - 1) {
+            throw "Неверный индекс";
+        }
+        data[index]->edit();
+        if (data[index]->isError()) {
+            throw "Возникла ошибка при изменении элемента"
+        }
+        else {
+            cout << "Элемент изменен" << endl;
+        }
+    }
+    catch {
+        cout << "Возникла ошибка при изменении элемента" << endl;
+    }
+}
