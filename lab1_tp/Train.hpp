@@ -1,6 +1,10 @@
+#pragma once
 #include "CargoCarrier.hpp"
+#include <string>
 
-class Train {
+using namespace std;
+
+class Train : public CargoCarrier {
 private:
     string name;
     int year;

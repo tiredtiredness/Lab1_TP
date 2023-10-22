@@ -1,4 +1,5 @@
 #include "Train.hpp"
+#include <string>
 
 Train::Train() {
     cout << "Добавление поезда" << endl;
@@ -31,15 +32,15 @@ Train::Train() {
         }
         setError(false);
     }
-    catch {
-        cout << "Возникла ошибка" << endl;
+    catch (string err) {
+        cout << "Возникла ошибка" << err << endl;
         setError(true);
     }
 }
 
 Train::Train(ifstream& fin) {
     setType(2);
-    fin >> name >> route >> this-> year >> this->wagonsCount >> this->volume;
+    fin >> this->name >> this->year >> this->route >> this->wagonsCount >> this->volume;
 }
 
 Train::~Train() {}
