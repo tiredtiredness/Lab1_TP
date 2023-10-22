@@ -1,6 +1,8 @@
+#include "CargoCarrier.hpp"
 #include "Plane.hpp"
 #include "Train.hpp"
 #include "Car.hpp"
+#include <fstream>
 
 class Keeper {
 private:
@@ -15,4 +17,5 @@ public:
     void edit();
     void save();
     void load();
+    friend ostream& operator<<(ostream& out, Keeper& obj);
 };
